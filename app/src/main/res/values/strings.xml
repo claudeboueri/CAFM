@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CAFM</string>
+    <string name="Login_Title">MEMBER LOGIN</string>
+    <string name="Remember">Remember Me</string>
+    <string name="Login">Log In</string>
+
+
+</resources>
