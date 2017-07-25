@@ -3,6 +3,7 @@
     <string name="Login_Title">MEMBER LOGIN</string>
     <string name="Remember">Remember Me</string>
     <string name="Login">Log In</string>
+    <string name="login_api">http://app.skylarklb.com/login</string>
 
 
 </resources>
