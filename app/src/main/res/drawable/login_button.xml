@@ -3,11 +3,9 @@
 
     <item>
         <shape>
-        <!--    <stroke
-                android:width="2dp"
-                android:color="#777" />-->
-            <corners android:radius="6dp" />
-            <solid android:color="@color/White"/>
+
+            <corners android:radius="4dp" />
+            <solid android:color="@color/Blue"/>
         </shape>
     </item>
     <item android:drawable="@drawable/edit_text1" />
