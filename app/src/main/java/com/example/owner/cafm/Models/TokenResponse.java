@@ -17,6 +17,10 @@ public class TokenResponse {
     @SerializedName("user")
     @Expose
     private User user;
+    @SerializedName("message")
+    @Expose
+    private String message;
+
 
     public String getToken() {
         return token;
@@ -29,4 +33,6 @@ public class TokenResponse {
     public User getUser() {
         return user;
     }
+
+    public String getMessage() { return message; }
 }

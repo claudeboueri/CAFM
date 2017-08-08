@@ -1,5 +1,7 @@
 package com.example.owner.cafm;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +20,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
 
     private EditText username;
@@ -63,23 +65,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void Login() {
 
-        if (username.getText().equals("") && password.getText().equals("")) {
-            Toast.makeText(MainActivity.this, "Please enter username and passord", Toast.LENGTH_SHORT).show();
-        } else if (username.getText().equals("")) {
+        login.setText("Clicked");
+
+        if (username.getText().length()==0 && password.getText().length()==0) {
+            Toast.makeText(MainActivity.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+        } else if (username.getText().length()==0) {
             Toast.makeText(MainActivity.this, "Please enter username", Toast.LENGTH_SHORT).show();
-        } else if (password.getText().equals("")) {
-            Toast.makeText(MainActivity.this, "password", Toast.LENGTH_SHORT).show();
+        } else if (password.getText().length()==0) {
+            Toast.makeText(MainActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
         } else {
             user = username.getText().toString().replaceAll("\\s+$", "");
             pass = password.getText().toString();
 
+
+
             TokenRequest tokenRequest = new TokenRequest();
 
 
-            // "111" is a test case user should be changed to string -- backend
-            tokenRequest.setNumber(111);
+            tokenRequest.setUsername(user);
             tokenRequest.setPassword(pass);
-            tokenRequest.setNumber(1);
+            tokenRequest.setNumber(71412978);
+            tokenRequest.setType(1);
 
 
            Call<TokenResponse> tokenResponseCall = service.getTokenAccess(tokenRequest);
@@ -89,9 +95,23 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Response<TokenResponse> response, Retrofit retrofit) {
 
                     int statusCode = response.code();
+                    if (response.code() == 401 ) {
 
-                    TokenResponse tokenResponse = response.body();
-                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Incorrect Password or Username", Toast.LENGTH_SHORT).show();
+                    } else if (response.code()==400) {
+
+                        Toast.makeText(MainActivity.this, "Error ! "+ response.message(), Toast.LENGTH_SHORT).show();
+
+                    }
+                    else if (response.code()==200){
+                        Intent intent = new Intent (MainActivity.this, HomePage.class);
+                        TokenResponse tokenResponse = response.body();
+                        intent.putExtra("Token", tokenResponse.getToken());
+                        intent.putExtra("User", tokenResponse.getUser());
+                        startActivity(intent);
+
+                    }
+
                 }
 
                 @Override
@@ -103,5 +123,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-    }
+
+
 }
+
+
+    private boolean isEmailValid(String email) {
+        return email.contains("@");
+    }
+    private boolean isPasswordValid(String password) {
+        return password.length() > 4;
+    }
+
+
+
+}
+

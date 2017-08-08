@@ -4,8 +4,10 @@ package com.example.owner.cafm.Models;
 public class TokenRequest {
 
     private int number;
+    private String username;
     private String password;
     private int type;
+
 
     public int getNumber() {
         return number;
@@ -30,4 +32,9 @@ public class TokenRequest {
     public void setType(int type) {
         this.type = type;
     }
+
+    public String getUsername() { return username; }
+
+    public void setUsername(String username) { this.username = username; }
+
 }

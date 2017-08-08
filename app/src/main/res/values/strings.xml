@@ -4,9 +4,31 @@
     <string name="Remember">Remember Me</string>
     <string name="Login">Log In</string>
     <string name="login_api">http://app.skylarklb.com/login</string>
+    <string name="requests_api">http://app.skylarklb.com/requests</string>
     <string name="username">Username</string>
     <string name="forgot_password"> <u><i>Forgot Password ?</i></u></string>
     <string name="password">Password</string>
+    <string name="verify_phone_number">Verify Phone Number</string>
+    <string name="verify">Verify</string>
+    <string name="number">Number</string>
+    <string name="send_message">Send Message</string>
+    <string name="code">Code</string>
+    <string-array name="Recipients">
+        <item></item>
+        <item>Maintenance</item>
+        <item>Cleaning</item>
+        <item>Tech Support</item>
+        <item>Complaint</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="Emergency">
+        <item></item>
+        <item>Normal</item>
+        <item>Urgent</item>
+        <item>Crisis</item>
+    </string-array>
+
+
 
 
 </resources>
