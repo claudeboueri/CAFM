@@ -3,17 +3,17 @@ package com.example.owner.cafm.Models;
 
 public class TokenRequest {
 
-    private int number;
+    private long number;
     private String username;
     private String password;
     private int type;
 
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 

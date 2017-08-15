@@ -78,6 +78,7 @@ public class MakeRequest extends Activity {
 
 
 
+
         String baseUrl = getString(R.string.requests_api);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -160,7 +161,7 @@ public class MakeRequest extends Activity {
                     tokenRequest.setAddress(address);
 
 
-                    Call<OrderResponse> tokenResponseCall = service.getOrderAccess(token, tokenRequest);
+                    Call<OrderResponse> tokenResponseCall = service.getOrderAccess("Bearer "+ token, tokenRequest);
 
                     tokenResponseCall.enqueue(new Callback<OrderResponse>() {
                         @Override

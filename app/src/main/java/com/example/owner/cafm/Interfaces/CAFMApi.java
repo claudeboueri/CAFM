@@ -25,11 +25,8 @@ public interface CAFMApi {
     @POST("requests")
     Call<OrderResponse> getOrderAccess(@Header("Authorization") String token ,@Body OrderRequest orderRequest);
 
-    @GET("user")
-    Call<RequestResponse> getUser(@Header("Authorization") String authorization );
-
-
-
+    @GET("requests")
+    Call<RequestResponse> getRequests(@Header("Authorization")String token);
 
 
 }

@@ -15,14 +15,14 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MakeRequest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MakeRequest" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".HomePage" />
         <activity android:name=".SignUp2" />
         <activity android:name=".CheckRequest" />

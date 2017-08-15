@@ -93,33 +93,33 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="1">-->
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/Blue"
-                android:text="@string/Remember"
-                android:textColor="@color/Blue"
-                android:textSize="12dp" />
+            <!--<CheckBox-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:buttonTint="@color/Blue"-->
+                <!--android:text="@string/Remember"-->
+                <!--android:textColor="@color/Blue"-->
+                <!--android:textSize="12dp" />-->
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.74"
-                android:text="@string/forgot_password"
-                android:textColor="@color/Blue"
-                android:textSize="12dp" />
+            <!--<TextView-->
+                <!--android:id="@+id/textView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.74"-->
+                <!--android:text="@string/forgot_password"-->
+                <!--android:textColor="@color/Blue"-->
+                <!--android:textSize="12dp" />-->
 
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <Button
             android:id="@+id/login"

@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 
             tokenRequest.setUsername(user);
             tokenRequest.setPassword(pass);
-            tokenRequest.setNumber(71412978);
+            tokenRequest.setNumber(1);
             tokenRequest.setType(1);
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.owner.cafm.Objects.User;
 import com.example.owner.cafm.R;
 
 public class HomePage extends Activity {
@@ -27,6 +28,7 @@ public class HomePage extends Activity {
             @Override
             public void onClick(View view) {
                 Intent token = getIntent();
+                User user = token.getParcelableExtra("User");
                 Intent intent = new Intent(HomePage.this, MakeRequest.class);
                 intent.putExtra("Token", token.getStringExtra("Token"));
                 startActivity(intent);
