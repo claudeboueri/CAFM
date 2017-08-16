@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -105,12 +106,12 @@ public class SignUp2 extends Activity  {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "signInWithCredential:success");
+                            Toast.makeText(SignUp2.this, "signInWithCredential:success", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUp2.this, MainActivity.class);
                             startActivity(intent);
 
                         } else {
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(SignUp2.this, "signInWithCredential:failure", Toast.LENGTH_SHORT).show();
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
 
                             }

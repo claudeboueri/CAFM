@@ -113,6 +113,21 @@
         android:textSize="15dp"
         android:layout_margin="8dp"
         android:text="Description "/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image"
+        android:textColor="@color/Blue"
+        android:textSize="20dp"
+        android:layout_margin="8dp"/>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_margin="8dp"
+        android:text="Description "/>
+
 
 
 </LinearLayout>

@@ -11,6 +11,17 @@ public class OrderRequest {
     private String Photo;
     private Address address;
 
+    public OrderRequest() {
+    }
+
+    public OrderRequest(int type, int emergency, String description, String photo, Address address) {
+        Emergency = emergency;
+        Type = type;
+        Description = description;
+        Photo = photo;
+        this.address = address;
+    }
+
     public Address getAddress() {
         return address;
     }

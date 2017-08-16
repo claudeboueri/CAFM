@@ -94,7 +94,10 @@ public class SignUp extends Activity  {
                 Log.d(TAG, "onCodeSent:" + verificationId);
                 mVerificationId = verificationId;
                 mResendToken = token;
-
+                Intent intent = new Intent (SignUp.this, SignUp2.class);
+                intent.putExtra("ID", mVerificationId);
+                intent.putExtra("Token", mResendToken);
+                startActivity(intent);
 
             }
         };
@@ -106,11 +109,8 @@ public class SignUp extends Activity  {
                     return;
                 }
 
-                startPhoneNumberVerification(mPhoneNumberField.getText().toString());
-                Intent intent = new Intent (SignUp.this, SignUp2.class);
-                intent.putExtra("ID", mVerificationId);
-                intent.putExtra("Token", mResendToken);
-                startActivity(intent);
+                startPhoneNumberVerification("+961"+mPhoneNumberField.getText().toString());
+
             }
         });
     }
@@ -149,11 +149,11 @@ public class SignUp extends Activity  {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "signInWithCredential:success");
+                            Log.d(TAG, "success");
 
                             FirebaseUser user = task.getResult().getUser();
                         } else {
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Log.w(TAG, "failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
 
                             }

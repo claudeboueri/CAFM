@@ -1,12 +1,23 @@
 package com.example.owner.cafm;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,15 +35,20 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class CheckRequest extends Activity {
+import static android.R.id.input;
 
-    TextView Project;
+public class CheckRequest extends FragmentActivity {
+
+    LinearLayout fragment;
+    Spinner spinner;
+    TextView Project_Name;
     TextView Building;
     TextView Floor;
     TextView Description;
     TextView Emergency;
     TextView Recepient;
-    Spinner spinner;
+    ImageView Image;
+
 
 
     private CAFMApi service;
@@ -41,18 +57,26 @@ public class CheckRequest extends Activity {
     String token;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_request);
 
-//        Project= (TextView) findViewById(R.id.Project_Name);
-//        Building= (TextView) findViewById(R.id.Building);
-//        Floor= (TextView) findViewById(R.id.Floor);
-//        Description= (TextView) findViewById(R.id.description);
-//        Recepient= (TextView) findViewById(R.id.Recepient);
           spinner = (Spinner) findViewById(R.id.spinner);
+          fragment = (LinearLayout) findViewById(R.id.fragment);
+          Project_Name=  (TextView) findViewById(R.id.Project_Name);
+          Building=  (TextView) findViewById(R.id.Building);
+          Floor =  (TextView) findViewById(R.id.Floor);
+          Description= (TextView) findViewById(R.id.description);
+          Emergency= (TextView) findViewById(R.id.Emergency);
+          Recepient= (TextView) findViewById(R.id.Recepient);
+        Image = (ImageView) findViewById(R.id.image);
 
+
+
+
+        fragment.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         token = intent.getStringExtra("Token");
@@ -65,7 +89,6 @@ public class CheckRequest extends Activity {
 
         service = retrofit.create(CAFMApi.class);
 
-//        RequestResponse tokenRequest = new RequestResponse();
 
 
         Call<RequestResponse> tokenResponseCall = service.getRequests("Bearer " + token);
@@ -105,6 +128,43 @@ public class CheckRequest extends Activity {
 
             }
         });
+
+
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
+                int item = spinner.getSelectedItemPosition();
+
+                if (item==0){
+                    fragment.setVisibility(View.GONE);
+                }
+                else {
+                    fragment.setVisibility(View.VISIBLE);
+                    Request request = requests[item];
+                    Project_Name.setText(requests_title[item]+"");
+                   /* String building = request.getAddress().getBuilding()+"";
+                    Building.setText(building);*/
+                   /* Floor.setText(request.getAddress().getFloor()+"");
+                    Recepient.setText(request.getType()+"");
+                    Description.setText(request.getDescription()+"");
+                    Emergency.setText(request.getEmergency()+"");*/
+                  /* if (request.getPhoto()!=""){
+                        Image.setImageBitmap(DecodeImage(request.getPhoto()));
+                    }*/
+
+
+                }
+
+            }
+            public void onNothingSelected(AdapterView<?> arg0) { }
+        });
+    }
+
+    public Bitmap DecodeImage(String Image){
+        byte[] decodedBytes = Base64.decode(Image, 0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 }
 

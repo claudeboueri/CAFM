@@ -1,3 +1,4 @@
+/*
 package com.example.owner.cafm;
 
 import android.app.Activity;
@@ -40,7 +41,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class MakeRequest extends Activity {
+public class Test extends Activity {
 
     Spinner spinner_recipient;
     Spinner spinner_emergency;
@@ -79,6 +80,7 @@ public class MakeRequest extends Activity {
         Building = (EditText) findViewById(R.id.building);
         Floor = (EditText) findViewById(R.id.floor);
         Description = (EditText) findViewById(R.id.description);
+        Take_Picture = (Button) findViewById(R.id.take_picture);
         Upload_Image = (Button) findViewById(R.id.upload_image);
         Clear_Request = (Button) findViewById(R.id.clear);
         Submit = (Button) findViewById(R.id.submit);
@@ -94,7 +96,6 @@ public class MakeRequest extends Activity {
 
         String baseUrl = getString(R.string.requests_api);
         Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
 
@@ -113,15 +114,25 @@ public class MakeRequest extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_emergency.setAdapter(adapter2);
 
+        Take_Picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
 
         Upload_Image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
+                photoPickerIntent.setType("image*/
+/*");
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+
             }
         });
 
@@ -142,14 +153,14 @@ public class MakeRequest extends Activity {
             @Override
             public void onClick(View view) {
                 if (spinner_emergency.getSelectedItemPosition()==0 && spinner_emergency.getSelectedItemPosition()==0 ){
-                    Toast.makeText(MakeRequest.this, "Please enter a recipient and an emergency number", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Test.this, "Please enter a recipient and an emergency number", Toast.LENGTH_LONG).show();
                 }
                 else if (spinner_emergency.getSelectedItemPosition()==0 ) {
-                    Toast.makeText(MakeRequest.this, "Please enter an emergency number", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Test.this, "Please enter an emergency number", Toast.LENGTH_LONG).show();
 
                 }
                 else if (spinner_recipient.getSelectedItemPosition()==0 ) {
-                    Toast.makeText(MakeRequest.this, "Please enter a recipient", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Test.this, "Please enter a recipient", Toast.LENGTH_LONG).show();
 
                 }
                 else {
@@ -175,12 +186,12 @@ public class MakeRequest extends Activity {
                             int statusCode = response.code();
                             if (response.code() == 401 || response.code()==400) {
 
-                                Toast.makeText(MakeRequest.this, "Error ! "+response.message(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Test.this, "Error ! "+response.message(), Toast.LENGTH_SHORT).show();
 
 
                             }
                             else if (response.code()==200){
-                                Toast.makeText(MakeRequest.this, "Success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Test.this, "Success", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -189,7 +200,7 @@ public class MakeRequest extends Activity {
                         @Override
                         public void onFailure(Throwable t) {
 
-                            Toast.makeText(MakeRequest.this, "Failure", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Test.this, "Failure", Toast.LENGTH_SHORT).show();
                             Log.d("MainActivity", "Failure:" +t.getMessage());
 
                         }
@@ -199,7 +210,9 @@ public class MakeRequest extends Activity {
             }
         });
     }
-   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+*/
+/*    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             imageView.setVisibility(View.VISIBLE);
             Bitmap photo = (Bitmap) data.getExtras().get("data");
@@ -245,8 +258,13 @@ public class MakeRequest extends Activity {
         }
         cursor.close();
         return res;
-    }
+    }*//*
 
 
 
 }
+*/
+
+
+
+
